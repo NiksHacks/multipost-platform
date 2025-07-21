@@ -36,6 +36,11 @@ INSTAGRAM_BUSINESS_CLIENT_SECRET = your-instagram-business-client-secret
 INSTAGRAM_BUSINESS_ACCESS_TOKEN = your-instagram-business-access-token
 ```
 
+#### Database (Prisma)
+```
+DATABASE_URL = file:./dev.db
+```
+
 ### 2. Aggiorna gli URL di Callback
 
 Dopo il deploy, aggiorna gli URL di callback nelle console degli sviluppatori:
