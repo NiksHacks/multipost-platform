@@ -5,8 +5,8 @@ import { Providers } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'MultiPost Platform',
-  description: 'Gestisci e pubblica contenuti su tutti i tuoi social media',
+  title: 'Stratego Multi Post - Piattaforma Professionale Social Media',
+  description: 'La piattaforma professionale per gestire e pubblicare contenuti su tutti i tuoi social media con JavaScript dinamico e CSS3 avanzato',
 }
 
 export default function RootLayout({
@@ -18,22 +18,8 @@ export default function RootLayout({
     <html lang="it">
       <body className={inter.className}>
         <Providers>
-          <div className="min-h-screen bg-gray-50">
-            <nav className="bg-white shadow-sm border-b">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                  <div className="flex items-center">
-                    <h1 className="text-xl font-bold text-gray-900">MultiPost</h1>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    {/* Navigation items will go here */}
-                  </div>
-                </div>
-              </div>
-            </nav>
-            <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-              {children}
-            </main>
+          <div className="min-h-screen">
+            {children}
           </div>
         </Providers>
       </body>

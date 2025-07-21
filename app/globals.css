@@ -1,115 +1,415 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer base {
-  html {
-    font-family: system-ui, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.social-card {
+  @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  box-shadow: var(--shadow-soft);
+}
+
+.social-card:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-5px);
+}
+
+.social-button {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.social-button:hover::before {
+  left: 100%;
+}
+
+.youtube-button {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  @apply text-white shadow-red-500/25;
+}
+
+.youtube-button:hover {
+  background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+}
+
+.instagram-button {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  @apply text-white shadow-purple-500/25;
+}
+
+.instagram-button:hover {
+  background: linear-gradient(135deg, #6a2c93 0%, #e01818 50%, #e09f3e 100%);
+  box-shadow: 0 10px 20px rgba(131, 58, 180, 0.3);
+}
+
+.tiktok-button {
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+  @apply text-white shadow-gray-500/25;
+}
+
+.tiktok-button:hover {
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.linkedin-button {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+  @apply text-white shadow-blue-500/25;
+}
+
+.linkedin-button:hover {
+  background: linear-gradient(135deg, #005885 0%, #004066 100%);
+  box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
+}
+
+.reddit-button {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+  @apply text-white shadow-orange-500/25;
+}
+
+.reddit-button:hover {
+  background: linear-gradient(135deg, #cc3700 0%, #992a00 100%);
+  box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
+}
+
+.primary-button {
+  background: var(--gradient-primary);
+  @apply text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95;
+  box-shadow: var(--shadow-soft);
+}
+
+.primary-button:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.secondary-button {
+  background: var(--gradient-secondary);
+  @apply text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95;
+  box-shadow: var(--shadow-soft);
+}
+
+.success-button {
+  background: var(--gradient-success);
+  @apply text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-modern {
+  @apply bg-white/90 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-modern:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-10px);
+}
+
+.input-modern {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 bg-white/80 backdrop-blur-sm;
+}
+
+.textarea-modern {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 bg-white/80 backdrop-blur-sm resize-none;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-@layer components {
-  .social-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    padding: 1.5rem;
-    transition-property: box-shadow;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .social-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.social-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px currentColor;
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
   }
-  
-  .youtube-button {
-    background-color: #FF0000;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
   }
-  
-  .instagram-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-    background-color: #E1306C;
+  70% {
+    transform: scale(0.9);
   }
-  
-  .tiktok-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-    background-color: #000000;
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .linkedin-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-    background-color: #0077B5;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
   }
-  
-  .reddit-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 1px solid transparent;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    color: white;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-    background-color: #FF4500;
+  50% {
+    transform: scale(1.05);
   }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+  }
+}
+
+/* Stratego Brand Animations */
+.stratego-logo {
+  animation: float 3s ease-in-out infinite;
+}
+
+.stratego-title {
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradientShift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.pulse-glow {
+  animation: pulse 2s infinite, glow 2s infinite;
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-card:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.floating-card:nth-child(3) {
+  animation-delay: -4s;
+}
+
+/* Advanced Hover Effects */
+.card-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+}
+
+.neon-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, #667eea, #764ba2) border-box;
+  border-radius: 1rem;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Interactive Elements */
+.interactive-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.interactive-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.interactive-button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading Animations */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '.';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);
+  }
+  40% {
+    color: black;
+    text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);
+  }
+  60% {
+    text-shadow: .25em 0 0 black, .5em 0 0 rgba(0,0,0,0);
+  }
+  80%, 100% {
+    text-shadow: .25em 0 0 black, .5em 0 0 black;
+  }
+}
+
+.loading-spinner {
+  @apply inline-block w-6 h-6 border-2 border-white/30 border-t-white rounded-full;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.status-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-connected {
+  @apply bg-green-100 text-green-800 border border-green-200;
+}
+
+.status-disconnected {
+  @apply bg-gray-100 text-gray-800 border border-gray-200;
+}
+
+.floating-action {
+  @apply fixed bottom-8 right-8 w-16 h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95;
+  background: var(--gradient-primary);
+  z-index: 1000;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+}
+
+.modal-content {
+  @apply bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto;
+  box-shadow: var(--shadow-large);
 }
