@@ -117,7 +117,7 @@ export default function PostComposer({ connectedAccounts, onPublish, onClose }: 
       }
       
       await onPublish(formData, selectedAccountObjects)
-    } catch (error) {
+    } catch (error: any) {
       console.error('Errore nella pubblicazione:', error)
     } finally {
       setIsPublishing(false)

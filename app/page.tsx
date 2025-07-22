@@ -29,7 +29,7 @@ export default function HomePage() {
       if (savedAccounts) {
         try {
           setConnectedAccounts(JSON.parse(savedAccounts))
-        } catch (error) {
+        } catch (error: any) {
           console.error('Error loading saved accounts:', error)
         }
       }
@@ -101,7 +101,7 @@ export default function HomePage() {
         callbackUrl: window.location.origin,
         redirect: true 
       })
-    } catch (error) {
+    } catch (error: any) {
       console.error('Errore nella connessione:', error)
     }
   }
@@ -125,7 +125,7 @@ export default function HomePage() {
       } catch (apiError) {
         console.log('API disconnect endpoint not available, account removed locally')
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Errore nella disconnessione:', error)
     }
   }
@@ -172,7 +172,7 @@ export default function HomePage() {
         console.error('Publication error:', errorMessage);
         alert(`Errore nella pubblicazione:\n${errorMessage}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Errore:', error);
       alert('Errore nella pubblicazione del post');
     }

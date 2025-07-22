@@ -83,7 +83,7 @@ async function publishToYouTube(content: string, videoFile?: any, isShort: boole
   }) => {
     try {
       return await uploadVideoToYouTube(uploadParams);
-    } catch (error) {
+    } catch (error: any) {
       // Se l'errore è 401 (Unauthorized), prova a rinnovare il token
       if (error.code === 401 || error.status === 401) {
         console.log('Token scaduto, tentativo di refresh...');
@@ -155,7 +155,7 @@ async function publishToYouTube(content: string, videoFile?: any, isShort: boole
     
     console.log('YouTube upload result:', result);
     return result
-  } catch (error) {
+  } catch (error: any) {
     console.error('Errore nell\'upload su YouTube:', error)
     return {
       success: false,
@@ -366,7 +366,7 @@ export async function POST(request: NextRequest) {
       message: allSuccessful ? 'Tutti i post sono stati pubblicati con successo' : 'Alcuni post hanno avuto errori'
     });
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('Errore nella pubblicazione:', error);
     
     // Pulisci i file temporanei in caso di errore
