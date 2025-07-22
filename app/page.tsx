@@ -52,7 +52,7 @@ export default function HomePage() {
       const mappedPlatform = platformMapping[session.provider] || session.provider
       
       // Create unique ID combining platform and user identifier
-      const uniqueId = `${mappedPlatform}-${session.user.id || session.user.email || Date.now()}`
+      const uniqueId = `${mappedPlatform}-${session.user.email || session.user.name || Date.now()}`
       
       const newAccount: SocialAccount = {
         id: uniqueId,
@@ -83,12 +83,12 @@ export default function HomePage() {
   }, [session])
 
   const socialPlatforms = [
-    { id: 'youtube', name: 'YouTube', color: 'youtube', icon: 'YT' },
-    { id: 'instagram', name: 'Instagram (Personal)', color: 'instagram', icon: 'IG' },
-    { id: 'instagram-business', name: 'Instagram Business', color: 'instagram', icon: 'IB' },
-    { id: 'tiktok', name: 'TikTok', color: 'tiktok', icon: 'TT' },
-    { id: 'linkedin', name: 'LinkedIn', color: 'linkedin', icon: 'LI' },
-    { id: 'reddit', name: 'Reddit', color: 'reddit', icon: 'RD' },
+    { id: 'youtube', name: 'YouTube', description: 'Condividi video e contenuti multimediali', color: 'youtube', icon: 'YT' },
+    { id: 'instagram', name: 'Instagram (Personal)', description: 'Foto e storie per il tuo profilo personale', color: 'instagram', icon: 'IG' },
+    { id: 'instagram-business', name: 'Instagram Business', description: 'Account business per promozione e marketing', color: 'instagram', icon: 'IB' },
+    { id: 'tiktok', name: 'TikTok', description: 'Video brevi e contenuti virali', color: 'tiktok', icon: 'TT' },
+    { id: 'linkedin', name: 'LinkedIn', description: 'Network professionale e contenuti business', color: 'linkedin', icon: 'LI' },
+    { id: 'reddit', name: 'Reddit', description: 'Community e discussioni tematiche', color: 'reddit', icon: 'RD' },
   ]
 
   const handleConnectAccount = async (platform: string) => {
@@ -156,7 +156,7 @@ export default function HomePage() {
       
       if (result.success) {
         alert('Post pubblicato con successo!');
-        setShowComposer(false)
+        setShowPostComposer(false)
       } else {
         // Estrai gli errori dai risultati
         let errorMessage = result.message || 'Errore sconosciuto';

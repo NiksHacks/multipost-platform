@@ -31,6 +31,7 @@ const SocialAccountCard: React.FC<SocialAccountCardProps> = ({
       case 'youtube':
         return 'youtube-button';
       case 'instagram':
+      case 'instagram-business':
         return 'instagram-button';
       case 'tiktok':
         return 'tiktok-button';
@@ -48,6 +49,7 @@ const SocialAccountCard: React.FC<SocialAccountCardProps> = ({
       case 'youtube':
         return 'from-red-500 to-red-600';
       case 'instagram':
+      case 'instagram-business':
         return 'from-purple-500 via-pink-500 to-orange-500';
       case 'tiktok':
         return 'from-black to-gray-800';

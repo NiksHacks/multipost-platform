@@ -5,7 +5,7 @@ import { X, Image, Video, FileText, Upload, Send, Settings, Eye, EyeOff, Globe, 
 
 interface SocialAccount {
   id: string
-  platform: 'youtube' | 'instagram' | 'tiktok' | 'linkedin' | 'reddit'
+  platform: 'youtube' | 'instagram' | 'instagram-business' | 'tiktok' | 'linkedin' | 'reddit'
   username: string
   isConnected: boolean
   accessToken?: string
@@ -20,6 +20,7 @@ interface PostComposerProps {
 const platformConfig = {
   youtube: { name: 'YouTube', icon: 'YT', maxChars: 5000 },
   instagram: { name: 'Instagram', icon: 'IG', maxChars: 2200 },
+  'instagram-business': { name: 'Instagram Business', icon: 'IB', maxChars: 2200 },
   tiktok: { name: 'TikTok', icon: 'TT', maxChars: 300 },
   linkedin: { name: 'LinkedIn', icon: 'LI', maxChars: 3000 },
   reddit: { name: 'Reddit', icon: 'RD', maxChars: 40000 },
