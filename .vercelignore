@@ -3,9 +3,11 @@ build
 dist
 .git
 .trae
-.log
+*.log
 .next
 tsconfig.tsbuildinfo
 coverage
-*.config.js
-*.config.ts
+.env*
+!.env.example
+.DS_Store
+Thumbs.db
